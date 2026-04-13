@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje a Miami</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .accordion-button {
+            font-size: 16px;
+            padding: 14px;
+        }
+
+        .list-group-item {
+            padding: 14px;
+            font-size: 15px;
+        }
+
+        .carousel {
+            margin-top: 30px;
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+<div class="container">
+
+    <h1 class="text-center">🌴 Viaje a Miami 🌴</h1>
+
+    <!-- MAPA -->
+    <div class="d-grid mb-3">
+        <button class="btn btn-success" onclick="mostrarMapa()">📍 Calcular ruta</button>
+    </div>
+
+    <div id="mapSection" style="display:none;">
+        <input type="text" id="origen" class="form-control mb-2" placeholder="Ej: Miami Beach">
+        <button class="btn btn-primary w-100" onclick="irAGoogleMaps()">Ver ruta en auto</button>
+    </div>
+
+    <!-- VUELOS -->
+    <div class="d-flex gap-2 flex-wrap justify-content-center mt-3">
+        <button class="btn btn-primary flex-fill" data-bs-toggle="collapse" data-bs-target="#ida">✈️ Ida</button>
+        <button class="btn btn-secondary flex-fill" data-bs-toggle="collapse" data-bs-target="#vuelta">🛬 Vuelta</button>
+    </div>
+
+    <div class="collapse mt-3" id="ida">
+        <div class="card mx-auto" style="max-width: 400px;">
+            <div class="card-body">
+                <h5 class="text-center">🛫 Ida</h5>
+                Lunes 1 Junio<br>
+                Santiago → Miami<br>
+                Ref: YHUCTU<br><br>
+                ⏱️ 8h 35m<br>
+                SCL → MIA<br>
+                Llegada: Martes 2 Junio
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse mt-3" id="vuelta">
+        <div class="card mx-auto" style="max-width: 400px;">
+            <div class="card-body">
+                <h5 class="text-center">🛬 Vuelta</h5>
+                Martes 23 Junio<br>
+                Miami → Santiago<br>
+                Ref: YHUCTU<br><br>
+                ⏱️ 8h 10m<br>
+                MIA → SCL<br>
+                Llegada: Miércoles 24 Junio
+            </div>
+        </div>
+    </div>
+
+    <!-- ACORDION COMPLETO -->
+    <h4 class="mt-5 mb-3">📍 Explorar por categorías</h4>
+
+    <div class="accordion accordion-flush" id="accordionLinks">
+
+        <!-- PLAYAS -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#playas">🌴 Playas</button>
+            <div id="playas" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DW2PAcIxLNb/" target="_blank" class="list-group-item list-group-item-action">Miami Beach</a>
+                    <a href="https://www.instagram.com/reel/DV4naKgDYn8/" target="_blank" class="list-group-item list-group-item-action">Lugares turísticos playa</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMIDA -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#comida">🍔 Comida</button>
+            <div id="comida" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DWuq9XwDqjy/" target="_blank" class="list-group-item list-group-item-action">Restaurantes recomendados</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDA NOCTURNA -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#fiesta">🎉 Vida nocturna</button>
+            <div id="fiesta" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DWmuAg0j0dY/" target="_blank" class="list-group-item list-group-item-action">Fiestas en Miami</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPRAS -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#compras">🛍️ Compras</button>
+            <div id="compras" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DU50aVmDSl9/" target="_blank" class="list-group-item list-group-item-action">Outlets Miami</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCIAS -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#experiencias">🚗 Experiencias</button>
+            <div id="experiencias" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DUWR2kpkqTY/" target="_blank" class="list-group-item list-group-item-action">Recorrido ciudad</a>
+                    <a href="https://www.instagram.com/reel/DU0iBpWEcMR/" target="_blank" class="list-group-item list-group-item-action">Paseo en auto</a>
+                    <a href="https://www.instagram.com/reel/DVbTGfuloUW/" target="_blank" class="list-group-item list-group-item-action">Recomendaciones</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTAS -->
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#vistas">🌇 Vistas y fotos</button>
+            <div id="vistas" class="accordion-collapse collapse">
+                <div class="accordion-body list-group">
+                    <a href="https://www.instagram.com/reel/DMsdY28ROkE/" target="_blank" class="list-group-item list-group-item-action">Vistas ciudad</a>
+                    <a href="https://www.instagram.com/reel/DR5a8g_CfXM/" target="_blank" class="list-group-item list-group-item-action">Fotos</a>
+                    <a href="https://www.instagram.com/reel/DRNMyVMkceR/" target="_blank" class="list-group-item list-group-item-action">Lifestyle</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CARRUSEL -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+
+        <div class="carousel-indicators">
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/M2XED7RD7NA57KHZBWML2JCLBI.jpg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/DYPLPJRNSND5ZJDIS3BTAY6YHI.jpg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://www.latamairlines.com/content/dam/latamxp/sites/vamos-latam/news-miami/tic-tac/TicTac5.png" class="d-block w-100">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function mostrarMapa() {
+    document.getElementById("mapSection").style.display = "block";
+}
+
+function irAGoogleMaps() {
+    let origen = document.getElementById("origen").value;
+    if (origen === "") {
+        alert("Ingresa una dirección");
+        return;
+    }
+
+    let destino = "4071 NW 65th Ave, Virginia Gardens, Florida";
+
+    let url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origen)}&destination=${encodeURIComponent(destino)}&travelmode=driving`;
+
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
